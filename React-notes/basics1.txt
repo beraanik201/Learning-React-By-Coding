@@ -1,0 +1,79 @@
+Q1. Write Hello World using Javascript.
+=> <!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World using Javascript</title>
+  </head>
+  <body>
+      <div id="root"></div>
+      
+      <script>
+        const heading = document.createElement('h1');
+        heading.innerHTML = "Hello World";
+        
+        const root = document.getElementById('root');
+        root.appendChild(heading);
+      </script>
+  </body>
+</html>
+
+
+2. What is cdn?
+=> A Content Delivery Network (CDN) is a globally distributed network of servers that speeds up the delivery of web content by caching it closer to users. We use CDNs to improve website performance, reduce latency, and handle high traffic loads, ensuring a faster and more reliable online experience for users worldwide 
+
+3. What is crossorigin?
+=> Cross-Origin Resource Sharing (CORS) is a security mechanism implemented by web browsers that controls how web pages can request resources from a different origin (domain, protocol, or port) than the one from which the page itself was loaded.
+
+4. What is core react fundamental code?
+=> //If we have to do multiple nesting for creating element structures, it is is difficult to maintain,
+// That is why we use jsx for craeting tags
+//But this is core-react
+
+
+const parent = React.createElement("div", {id: "parent"},
+    React.createElement("div", {id: "child"}, [
+    React.createElement("h1", {}, "Hello World from Child"),
+    React.createElement("h2", {}, "Hello World from Child")
+    ]));
+
+    console.log(parent);
+
+// const heading = React.createElement("h1", { id: "heading" }, "Hello World");
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+console.log(root);
+
+root.render(parent);
+
+
+
+5.why is react called a library and not a framework?
+=> React's core responsibility is limited to the "view" layer of an application, specifically building user interfaces. 
+we can inject react into specific sections also like header, footer any specific part of a website.
+
+
+6. ***ReactElement is an object. => converts to HTML and browser understands it.
+7.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
