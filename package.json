@@ -1,0 +1,19 @@
+{
+  "name": "learning-react-by-coding",
+  "version": "1.0.0",
+  "description": "Learning React Step By Step",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beraanik201/Learning-React-By-Coding.git"
+  },
+  "author": "Anik Bera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beraanik201/Learning-React-By-Coding/issues"
+  },
+  "homepage": "https://github.com/beraanik201/Learning-React-By-Coding#readme"
+}

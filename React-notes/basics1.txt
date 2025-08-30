@@ -53,7 +53,16 @@ we can inject react into specific sections also like header, footer any specific
 
 
 6. ***ReactElement is an object. => converts to HTML and browser understands it.
-7.
+
+7. What is package.json?
+=> package.json is a file that is automatically created when we create a project 
+   using npm init command.
+   package.json is a configuration of npm.
+
+8. What is a bundler? (like webpack, parcel, vite)
+=> A bundler is a tool that takes multiple files and combines them into a single file.
+   Bundler bundles our files so that it can ship to production.
+
 
 
 
