@@ -2,7 +2,6 @@
   "name": "learning-react-by-coding",
   "version": "1.0.0",
   "description": "Learning React Step By Step",
-  "main": "App.js",
   "scripts": {
     "test": "jest"
   },
@@ -15,5 +14,15 @@
   "bugs": {
     "url": "https://github.com/beraanik201/Learning-React-By-Coding/issues"
   },
-  "homepage": "https://github.com/beraanik201/Learning-React-By-Coding#readme"
+  "homepage": "https://github.com/beraanik201/Learning-React-By-Coding#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
