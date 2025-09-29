@@ -131,6 +131,18 @@ we can inject react into specific sections also like header, footer any specific
 => The dist folder, short for "distribution," is a directory commonly used in software development to store the final, production-ready version of a project or application.
    It typically contains optimized and minified files that are ready to be deployed to a web server or distributed to users.
 
+19. How to know how to start a react project?
+=> We can check in package.json file for the scripts section.
+   e.g.-"scripts": {
+         "start": "parcel index.html",
+         "build": "parcel build index.html",
+         "test": "jest"
+         },
+   Here we can see to start the project we have to run - npm run start / npm start
+                                                         npm run build (for production build)
+
+20. 
+
 
 
 
