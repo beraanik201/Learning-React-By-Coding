@@ -45,6 +45,9 @@ console.log(root);
 
 root.render(parent);
 
+**This React.createElement() is Object.
+  when we render this element into DOM, it converts to HTML and browser understands it.
+
 
 
 5.why is react called a library and not a framework?
@@ -141,13 +144,142 @@ we can inject react into specific sections also like header, footer any specific
    Here we can see to start the project we have to run - npm run start / npm start
                                                          npm run build (for production build)
 
-20. 
+20. What is jsx?
+=> JSX stands for JavaScript XML.
+   Note: JSX is not a separate programming language, but rather a syntax extension for JavaScript.
+         It is not part of React itself, but is commonly used with React to describe the UI structure.
+         JSX is not Html inside JS. It is a syntax extension that looks similar to HTML.
+
+
+21. How jsx is converted to js? 
+    (e.g. <h1 id="heading">Hello World from jsx</h1>)
+=> Behind the scenes, JSX is transformed into regular JavaScript function calls that create React elements.
+   The transformation is typically done using a tool like Babel, which is a popular JavaScript transpiler.
+   Parcel uses babel to convert jsx to React.createElement.
+
+   JSX ==> React.createElement -JS Object ==> HTMLElement(render)   - Here Babel is converting jsx to React.createElement
+
+
+23. What is transpiler?
+=> A transpiler (short for "source-to-source compiler") is a type of compiler that takes source code 
+   written in one programming language and transforms it into equivalent source code in another programming 
+   language.
+   Transpilers are commonly used to convert code from a newer version of a language to an older version, 
+   or to convert code from one language to another that has similar features.
 
 
 
+24. ***We have to use camelCase for attributes in jsx instead of lowercase.
+     e.g. - class --> className
+           tabindex --> tabIndex
+           onclick --> onClick
+           for --> htmlFor
+
+
+25. ***If we write jsx in multiple lines, we have to wrap it in brackets.
+
+
+26. What are components in react?
+=> Components are the building blocks of a React application. They are reusable, self-contained pieces of
+   code that define how a certain part of the user interface (UI) should look and behave.
+   Components can be thought of as custom HTML elements that encapsulate their own structure, 
+   styling, and behavior.
+
+   i> Functional Components: These are JavaScript functions that return JSX to define the UI.
+                           (A Arrow function that returns a React element) - [We can write normal function also]
+                           Example:
+                           const MyComponent = () => {
+                             return <div>Hello, I am a functional component!</div>;
+                           };
+
+                           or if the function has only one return statement, we can write it like this:
+                           const MyComponent = () => <div>Hello, I am a functional component!</div>;
+
+                     ***How to render a functional component to the UI?
+                       ==> const HeadingComponent = () => <h1>This is a Heading Component</h1>;
+                           const root = ReactDOM.createRoot(document.getElementById("root"));
+                           root.render(<HeadingComponent/>);  //we have to use the component as a tag
+
+
+  ii> Class Based Components (older way, less used now)
 
 
 
+27. What is component composition?
+=> Component composition is a design pattern in React that allows you to build complex UIs by combining
+   simpler, reusable components. It involves nesting components within other components to create a hierarchy
+   of UI elements.
+
+   Example:
+   const Header = () => <header><h1>My Website</h1></header>;
+   const Footer = () => <footer><p>© 2023 My Website</p></footer>;
+   const MainContent = () => <main><p>Welcome to my website!</p></main>;
+
+   const App = () => (
+     <div>
+       <Header />
+       <MainContent />
+       <Footer />
+     </div>
+   );
+
+   In this example, the App component is composed of three smaller components: Header, MainContent, and Footer.
+   Each of these components is responsible for rendering a specific part of the UI, and they are combined
+   together in the App component to create the overall structure of the application.
+
+
+28. Give example where we can inject React element in React element?
+=> const elem = <span>Namaste React</span>;
+   const title = (
+      <h1> {elem} using JSX</h1>
+   )
+
+   const HeadingComponent = () => (
+      <div id="container">
+         {title}
+      </div>
+   )
+
+
+
+29. What is the difference between React Element and React Component?
+=> React Element: A React element is a plain JavaScript object that represents a DOM node or a component instance.
+                  It is the smallest building block of a React application and describes what you want to see on the screen.
+                  React elements are created using JSX or the React.createElement() method.
+
+   React Component: A React component is a reusable piece of code that defines how a certain part of the user interface (UI) should look and behave.
+                    Components can be thought of as custom HTML elements that encapsulate their own structure, styling, and behavior.
+                    Components can be functional components (JavaScript functions that return JSX) or class-based components (ES6 classes that extend React.Component).
+
+   In summary, a React element is an object that represents a DOM node or component instance, while a React component is a reusable 
+   piece of code that defines the structure and behavior of a part of the UI.
+
+
+30. What is Cross Site Scripting (XSS) attack? How jsx prevents it?
+=> Cross-Site Scripting (XSS) is a type of security vulnerability that allows attackers to inject malicious 
+scripts into web pages viewed by other users.
+   JSX prevents XSS attacks by escaping any values embedded in JSX before rendering them to the DOM.
+   This means that any potentially dangerous characters (like <, >, &, etc.) are converted to their 
+   corresponding HTML entities (like &lt;, &gt;, &amp;, etc.), which prevents them from being interpreted 
+   as executable code by the browser.
+
+
+
+31. Describe where to use which one? - {Title()} vs <Title /> vs <Title></Title>
+=> {Title()} - This syntax is used to call a regular JavaScript function named Title and embed its return value
+                directly into JSX. This is typically used when Title is a function that returns a React element or
+                some other value that you want to render.
+
+   <Title /> - This syntax is used to render a React component named Title. It is a self-closing tag, which means
+                that it does not have any children. This is typically used when Title is a functional or class-based
+                component that you want to include in your JSX.
+
+   <Title></Title> - This syntax is also used to render a React component named Title, but it allows you to include
+                     children between the opening and closing tags. This is useful when Title is a component that
+                     expects to receive child elements as props.
+
+   In summary, use {Title()} to call a regular function and embed its return value, use <Title /> to render a 
+   self-contained React component, and use <Title></Title> to render a React component that can accept child elements.
 
 
 
