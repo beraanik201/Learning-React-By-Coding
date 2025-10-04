@@ -1,0 +1,23 @@
+# Popular Foods
+
+
+## App Design
+
+### Component Hierarchy
+
+Header
+ - Logo
+ - Nav Items
+Body
+ - Search Bar
+ - Restaurant Container
+ - Restaurant Card (many)
+    - Image
+    - Name
+    - Cuisines
+    - Rating
+Footer
+ - copyright
+ - links
+ - address
+ - Contact

@@ -282,7 +282,128 @@ scripts into web pages viewed by other users.
    self-contained React component, and use <Title></Title> to render a React component that can accept child elements.
 
 
+32. how to write inline css in react jsx?
+=> In React JSX, we can write inline CSS styles using the style attribute, 
+   but instead of a string (like in plain HTML), we pass a JavaScript object.
+
+   Example:
+      function App() {
+         const boxStyle = {
+         backgroundColor: "lightgreen",
+   };
+
+      return (
+         <div style={boxStyle}>
+            <p style={{ fontWeight: "bold" }}>This is styled with inline CSS!</p>
+         </div>
+      );
+   }
+
+
+33. What is Props?
+=> ***Passing a prop to a function is like passing an argument to a function.
+
+   Props (short for "properties") are a way to pass data from a parent component to a child component in React.
+   They are read-only and allow components to be dynamic and reusable by accepting different values.
+
+   Example:
+   const Greeting = (props) => {
+     return (
+      <div>
+      console.log(props); //props is an object
+        <h1>Hello, {props.name}!</h1>;
+      </div>
+     )
+   };
+
+   const App = () => {
+     return (
+       <div>
+         <Greeting name="Alice" /> //Here we are passing name="Alice" as props to Greeting component
+         <Greeting name="Bob" />
+       </div>
+     );
+   };
+
+   In this example, the Greeting component accepts a prop called name and uses it to display a personalized greeting.
+   The App component renders two instances of the Greeting component with different name props, resulting in
+   "Hello, Alice!" and "Hello, Bob!" being displayed.
 
 
 
+34. What is destructuring props on the fly?
+=> Destructuring props on the fly refers to the practice of extracting specific properties from the props object
+   directly within the function parameter list of a functional component in React.
+   This allows for cleaner and more concise code by avoiding repetitive references to props.
 
+   Example without destructuring:
+   const Greeting = (props) => {
+     return <h1>Hello, {props.name}!</h1>;
+   };
+
+   Example with destructuring on the fly:
+   const Greeting = ({ name }) => {
+     return <h1>Hello, {name}!</h1>;
+   };
+
+   In this example, instead of accessing the name property via props.name, we destructure it directly in the
+   function parameter list by using { name }. This makes the code more readable and reduces redundancy.
+   This is not React specific, it is a feature of JavaScript ES6.
+
+   Basically this is same as:
+   const Greeting = (props) => {
+     const { name } = props; //destructuring
+     return <h1>Hello, {name}!</h1>;
+   };
+
+
+
+35. What is Config Driven UI?
+=> Config Driven UI is a design approach where the user interface (UI) of an application is
+   dynamically generated based on configuration data rather than being hardcoded in the application's source code.
+   This allows for greater flexibility and adaptability, as changes to the UI can be made by simply updating
+   the configuration data without needing to modify the underlying code.
+
+   Example:
+   const restaurantList = [
+     {
+       name: "Meghana Foods",
+       cuisine: ["Biryani", "North Indian", "Asian"],
+       rating: "4.5",
+     },
+     {
+       name: "KFC",
+       cuisine: ["Burger", "Fast Food"],
+       rating: "4.2",
+     },
+   ];
+
+   const RestaurantCard = ({ resName, resCuisine }) => {
+     return (
+       <div className="res-card">
+         <h3>{resName}</h3>
+         <h4>{resCuisine}</h4>
+       </div>
+     );
+   };
+
+   const App = () => {
+     return (
+       <div className="body">
+         <div className="search">Search</div>
+         <div className="res-container">
+           {restaurantList.map((restaurant) => (
+             <RestaurantCard
+               resName={restaurant.name}
+               resCuisine={restaurant.cuisine.join(", ")}
+             />
+           ))}
+         </div>
+       </div>
+     );
+   };
+
+   In this example, the restaurantList array serves as the configuration data that drives the UI.
+   The App component maps over this array to dynamically generate RestaurantCard components for each restaurant,
+   passing the relevant data as props. This way, if we want to add or remove restaurants, we can simply update
+   the restaurantList array without changing the App or RestaurantCard components.
