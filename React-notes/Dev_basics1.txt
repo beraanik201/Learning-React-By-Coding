@@ -407,3 +407,149 @@ scripts into web pages viewed by other users.
    The App component maps over this array to dynamically generate RestaurantCard components for each restaurant,
    passing the relevant data as props. This way, if we want to add or remove restaurants, we can simply update
    the restaurantList array without changing the App or RestaurantCard components.
+
+
+
+36. Take a real world scenario where data is coming through api and render it.
+=> const resObj = {
+         info: {
+            id: "150591",
+            name: "Satkar Restaurant",
+            cloudinaryImageId: "rvxp5xbniat84r6efku2",
+            locality: "Sinchai Colony",
+            areaName: "Satkar Chowk",
+            costForTwo: "₹250 for two",
+            cuisines: ["South Indian", "Indian", "Salads", "Desserts"],
+            avgRating: 4.4,
+            veg: true,
+            parentId: "21553",
+            avgRatingString: "4.4",
+            totalRatingsString: "3.2K+",
+            sla: {
+               deliveryTime: 46,
+               lastMileTravel: 13.4,
+               serviceability: "SERVICEABLE",
+               slaString: "45-50 mins",
+               lastMileTravelString: "13.4 km",
+               iconType: "ICON_TYPE_EMPTY",
+            },
+            availability: {
+               nextCloseTime: "2025-10-05 22:45:00",
+               opened: true,
+            },
+            badges: {
+               imageBadges: [
+               {
+                  imageId: "Rxawards/_CATEGORY-North%20Indian.png",
+                  description: "Delivery!",
+               },
+               {
+                  imageId: "Ratnesh_Badges/Rx_Awards_2025/_Milestone%20Restaurants.png",
+                  description: "Delivery!",
+               },
+               ],
+            },
+            isOpen: true,
+            aggregatedDiscountInfoV2: {},
+            type: "F",
+            badgesV2: {
+               entityBadges: {
+               imageBased: {
+                  badgeObject: [
+                     {
+                     attributes: {
+                        description: "Delivery!",
+                        imageId: "Rxawards/_CATEGORY-North%20Indian.png",
+                     },
+                     },
+                     {
+                     attributes: {
+                        description: "Delivery!",
+                        imageId:
+                           "Ratnesh_Badges/Rx_Awards_2025/_Milestone%20Restaurants.png",
+                     },
+                     },
+                  ],
+               },
+               textBased: {},
+               textExtendedBadges: {},
+               },
+            },
+            differentiatedUi: {
+               displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+               differentiatedUiMediaDetails: {
+               lottie: {},
+               video: {},
+               },
+            },
+            reviewsSummary: {},
+            displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+            restaurantOfferPresentationInfo: {},
+            externalRatings: {
+               aggregatedRating: {
+               rating: "--",
+               },
+            },
+            ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+         },
+         analytics: {
+            context: "seo-data-4f8d7ad2-0cfd-43a9-8d2a-31f5ac26c87b",
+         },
+         cta: {
+            link: "https://www.swiggy.com/city/chhindwara/satkar-restaurant-sinchai-colony-satkar-chowk-rest150591",
+            type: "WEBLINK",
+         },
+         };
+
+   const RestaurantCard = (props) => {
+   const { resData } = props;
+   console.log(resData);
+   return (
+      <div className="res-card">
+         <img
+         className="res-logo"
+         alt="res-logo"
+         src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAlAMBIgACEQEDEQH/xAAcAAACAwEBAQEAAAAAAAAAAAAFBgADBAcCAQj/xABFEAACAQIEAwUFBQYEAgsAAAABAgMEEQAFEiExQVEGEyJhcRSBkaHBFSMysdFCUmKS4fAHJDPxcuIWFzRDRFRjZHOi0v/EABkBAAIDAQAAAAAAAAAAAAAAAAMEAQIFAP/EACkRAAICAgIBBAIBBQEAAAAAAAECABEDIRIxBBMiQVEyYSMUcZGxwQX/2gAMAwEAAhEDEQA/ADcckQlQyqzqCLqNiRjbDWRQTzPTQrZ7hVkN9IxgnK3+7VkiJ8Nzx/THmoengjL1E6Qn9kObE+7jhpmCiyYNVLaUXNUPd3JcmxPLri4WRdTELGL3Y8sB0zbLy/8A2pj/AMMRt8SRirOc0p/YwsLOwJsxYWv0HE4Fk8lApIMNj8XIzAEag6vnkq60uFLO7aY4xvsOA+uDmS5cuXgzS2eqkvqI4KP3R+uK8moo4UNSzpPPJsZIzqCdFHT64I6zG4JS5HI4F42AD+R+zCeVnJ/jToSyWoQXEw0xSDu3PJb7An34C5Dmlbkc7ZJU9xNAjM0ccy7heq+W+NdZIphk7wXVgdQwoPnkGr7MzWMVUKm0TltMkY6Bvpi+a0bmJXx8gA4x/q+2UFKkmoox16NNGl7n/iwvx5/meZ1rWihpKVUDlT45Ap2ufPFNLHkNSkRiURTRC8cjISVvyNjvi15oYiq0VXCkgue9ZC1vNV2APmb4EudOVs2voQ2PE5e2P+Op47UyyjKhRQ31i8k8shHhvwQngPMY89koPYcuM87l3qAVibhrubsw/h4W9PPAyUZdCwrK1jXMLMvtBtGrddPM+ZxtyrNDX1L1ErM8jLpXawVegxIf1mpRqWz5FRSojCGUt94CQf3cfYqWWrl0066UHFm/Z8j5480dO1XUJEhNj4mYdBxw1RQrDEqILAchg+XJw67meiXszBTZXDAFZ/E4588ayqD9n440CK++LBT3G+FrZjDaHUxE4gJ443Cm/s49CnJNgDfHcTOsQft0HwxMEWo0Bs8katzB44mO4mdyE5Tm/aGdJBRUJ7ya9mcC9j0H64FwZHmNbMzVBMe1y7HUScHOyuTqtOtTMLySi5fmB0wbr6WtkvDltOQtt31AE+gxmtkOVrbf6jZycD6eLX7idV5LDTNGntEpcHxqbb/piueiq6+dBSvGsMJ8KsbajwwabIsz8Rlo5TLy5g+d8HMoygUtLGtSEU28TEDj64g6PUJkylEAVrMS0kzLKakOS8UnUcGH5HDTl2Yx19OJtP3g2kUngfLywcqsqimpzE6hojyPXqMKtDQvQ19VSvfSLb+/b88H8bIyZAL0ZRyufGbGxLM1k/y722uMcs7RJrqXZAfxbXx07NLlCAb22wj5rQa2Y879MauU6iCLFmnzPMKRrQVD6eGlt8aWz7NG271R56cXNl5Av05YjUViLjY74VpfkQln7mQPPUsWqZXlYHa5+nDDd2YlaNwCTa222BENC0a3dSC+4PTBjKojE2rUbDYnBMbUdSjrY3Otdk6U+yPUEC7kafQf2cHe6udsYeyqg5TCoA2jT5rf874MaRwPTEH3GzJOtSpIxbb5c8WgKG08xwwvFazNnnm9pFJl1KzAwREiVrcNXkcCzkMuYzN7NUFwrAqC26/UYgtUgC45mWGM2kkUctIO5Ppj47ytGVS8S33JN3P6YH5XlS0J+9F5VGzMblf0xsNUodkplR5E2Z9iEPQdT+WLAziPqUvlsCn7wQhv/V3b8sTGKaiDyF5ru53JJOJjrkVB2UUBjoaRXZCO6XUF5bYMxvFEQiyhb7EDbCp2a7YUdbCkFey0tXbdyPBJ+hw1RqrASRqj3GzqAcZyqFPthciEE8hAvbDNEoVidquSK91RlBuzdDy+OAHYyWWrzWZY5jNSrDrYu+rxlhbb44dqmkoq6Puq6jhqEUg6J4VcX62OM8gpMsR3jipKVWN/AgjW1rC4HHbBGIIoxdMbF7EtIsultzhL7TZnFTZrBSqw76aRO8A4hR19cU5727jpopYqJUmq2uC6EmOMcjcgE/DCNQTyVeaRzzyGSVprsx3JtgeP8hU0FxFFJaPpjimlVJW2I2344CZxSQUxI9oRXO+ljy92CDEnfywMzbK4swjUt4WU7MOIxq5ASsQs1Qgcul1YiMgj9m5v8sVCJJZFSNVFvLHqSmlhjeFSxOx92PeSxl8xSM3K7llI+uM4YXR+7imPG+POCTc1Q0h9pSKXU4PAKcaKWBUlbVGfCbXbji6ogjEyiMEEXx802F+eHUWjH2Op0PsdmcREEGrwFO6ueOocL4bnBty9+OJZTmXsla8LyELIQQQbaWHPHWOzeewZvTCKRgtbEPvFP7XmMVvixBliOSgiYc7p4lUzQnuZQDqdNrra5ub8NsYMiqq+moJzliDuSNfeultTHiB1wczaDVrBUsCCpHUEWPywrV9bLQq1HQyzPTbOiygaoyf3bmwOJMHVTZDPnM2unkAXUfHKb3388MtFSx09MiRi4XgeNzzOMVLnlMKKGGnikkn0AGSQbA9d+JwQgj8AtbYc+P5YhdGXJuQxi/DH3FoX0+X6Y+4tKz8+xrTpVzoxXxbgFbWxsoquugYrTVs0Om+wckDnbfAbO6ORrVKkKtjYq12FuvTyvih82ekhg7ucVLsNT2XSUPS/PC+TAeVrHMXkDjTRjk7Q5y50DNKg7bgbfXAp6uWvQyT1FS+xIEjdOPDlxwLbPV3Jp31HYm+M0uY2ULEiJHYm5HDe5wv6GQ/EP6+MfM1VEyaWugQI1uOx88acjYd+shB0A2uOOCeRdj6vN4Fq6v8AydNLuskoLO4/hXifU2GHnJ8iyrJIwtPDrcbmeos7nzA4L8MM4ca4zZimbKcgoCYaOkqqxS1PTzMltiRYfE7Y3wZPVhSrS00Ybkzaj7rAjBL25GuyqZSvEcbYwy9oLM2hGdb+AxqfFgx8hLq4A4yoszJL2TaU6pKyx/hhJ+uLoezfdHU1WXH/AMH/ADYI081dU0bTBWhcsVRHA+YvfkcY6qqzmiXvqilf2dU1tIbKPn+XHA/6hPuX9B+6mWs7OTu6vTSwNYbqSVJ+It88YKjKK6npnmkppQRtYLqHxF8dA7KAVmVxZjVKT33iijbgF6n1wd9qG41aegAGB5fOxYjTGQMTGfm7NppI5WKAgoeDfXBPIe0T/d1EUzRTRWAa+6+R8uhx2PP+y+V9pojDmNOq1AXVFWRIFkW3InmN+B2xw3tL2Lzbs5mNRJlzirEJ8axizqp/eTmvmPgMX5rmXkslTwNGdfyLtpSZgops3Apqm1hJbwMOv9eGNNblPfSLNHpeM8GBuD+uOGZZnUVQAgYRuP8AuZTcE/wnlhpyvtLX5bYQVUkQB/BL4lPv/pipLDRhOKnYnTqGg+8UaeeGCGIhACLHyY4Qsu/xFKqPbcuR7ftwm1/hfBqn/wARMldfvIapP5T9fpi6Mog2Rj1Gfum6t/Mf1xML/wD1g5D/AO5/lH/6xMX5rI9NvqcWrJJzTvSqzGG+tlttfrhfkpwGJ0g359MM1U7yl+WrdrAfIDA0Ub1NRHTwn72VwiX4XJsPzxNyDL+znYfNu0rK1BSItKh0y1Mr6UB5+ZPkBjp2Sf4YUuWwRvPUxV1TGdUYeMiNW623v79sOOWUNPk+W02XUq2gp0CebHmx8ybnGjXjPz+eEbiIRMZIuI+YyvS1ns1RGyzMwU9Rfz4DbfAmWYvLIkqyuCpKooNwV/EDbDl2sy5auGmq+9EUkThLkbNfgPpjDlTUiKwjh1TxmzSuv4mPX9MKZ8r8u6EfwKhTlVydnUn9hj7zLmCu1kcKC5UbgkHfrxwOOUVcNdIpjlSMMGaVkYKy34KN9/1wcmzBYLq0zWb8ZVhc4gz1lidI11hRtw+OJVwBZNGDy+P6pFjqK2dJG1X/AJNp6WVou9EqsSzKu9mJPEb79D8BVRl2a1NalQKySqgLXkpzfSthsAb358umGep7V5dRSxLXvH3RYqjMB7wT6X2xtX7Mr5mlpqiOOLRpElO2zKRwsOnX54CA3Y/1G+XHRE1djplXJYqH2hZ5KO8chQ32ubH8wfTBjUhPiIPphEzHJZ8pilrez9ZHTVVPYxGNdQnFvEri1iD5c8FYe3LUcejOMuZpYwveS0Z1Rknba9tt8GbFhz7c0Yk6OptBYMcKdSGMgZtNhZW2GETt9PGnaWmRR940AY22KkE2OCNT24BpKiTLsumM0agoJyFDE8LWOESR84zOobNK0hmv4hp4X2AH98jhsZceNRjU3BL4+RjyaU9q+w0ecRtW0WiHMDY6gNKVBtwa2yv0IFjz6450uYZnlc7084a8TaWhmHiQ9OuO10OZJLAYagaSFs6tgF2n7OU+fyRzqR7bH+GRv/ERj9hv4hvv0w4GUrAEMpiBB2jpzvNTujDiUwQg7QZa3GrkU9GLfpjJmmSUseprCPSSGKnb0wDemjX8INyTY+WO4rJ5mN329lv/AJ4/zH9MTCf7PiY7iJ3L9To5Ur+BBpZfmcauyNEk2eQ1U11pqR0dzbixPhH192MtZVwrTxuGLOtwFtYWsN/6YYKCkNN2XjuumWcd+5vx1fh/+uLE0LlTvQnUZxpZgeBYkG2xxWjXcIqkk9MD+yWexZ1l0SSTI1bFGBKp21gbawDyODE8sFHTvNO6RRINTMTYYz38LHkc5LhBkZfbUEdqJkjytYpFdgz3ZUUnaxvewNsAXrGghV5xbUupmO5LWvsBy+eK5MzrM8zM19JPLBQwqe7W1jILE736nl0wM7RVUsVCksIjbQ3i1fiO37OFM55ZP1NHx14puX1EsOpXRlIcE3AI+NxfGCWvakAIK2KltDjbbz9ME6WjiqqExyM8VUoD6u7uwB4bdeIt6YwpPRVtSKeYM5heWXSL2XQeJHK+9h5Yqq7toUtYoRN7YSQVksJkiEJWNZJkCfhexv8AT4YJ0dbUhYqSnEel7KihLbct+WC0FFRVlTU1NVEtRHBFqkMnUm4HyI264Jx5RFQyCrijWmgkUBZVuxQDhxvbjY+l8ELkLQMVz+O+R1INVPMSVNOxStCVEV9P3XFDa9mFrdceqyipqSk9qiV5IO8PelwSU5gX5qAOJvj7X97NWw0WXSMO8PjkcDwgbg6t9uPoL4EZfUZjKzUdNOsczB0NpBsRxte4t63xSuWjGgw+IQjiiSpepiqomhkCKNbbE3uQLeQ8rYmf5zFRUfdQLrMYGiORLhOlydzz44v9hmp1L1iaS8d4TCFtrIux6X4/LClm1ZD9o37tyoGkQy+NWtcb9eu+Lrj4dyrMDuEaaCprI4a13QEt3LIBZjbn5iwtjZSM6zLBIRcMCDe+k8Qfyxgo8wiR4mYummQMiINKA/nt7sa5WjjzNJ0nBeoNyhuxUDieGw/XFsWb30OoBlTIpKm4C7Z5HVLWCsooXNLUXaREH+nLwbbodiLeflhTehZZLMCGHEEWOOy1ETVVDKI/xlNano67g/D8sJWZ081fWWRD90oQHY3687/LGkXpv1EuNiJvsmnYqcTBxoDGxR9JYcbcsTE3K1PskM1bVpTxxlr+EWHxOOjdowlPQul7Ki6RbkALDCx2SjWOSareUa+8EEcbA8WIu1+HUWw55xHGzhZkLx3ZmsOhNvnbE+Q3FSROxC2EV6J5wtNVilNPN3fimjjO1jupbl12t78e84mlTLTJXzTzwBSyGWWzsb8QR+mNtXMVii+zzohVNPdhrMBsbHnx44DaUappnidzIsgYK3jU8ATY+f5Yygj8bJjZ83CMvpfML5JUTyZNG0IaKGQDuRIRqjAPic3PDjy6bYz5vWU9RG+XSqZNSkRzKbWexsRgjW08U8KhGU1xsxVhcRqW3Fhx22t/CMLXaGOamkD00WsR3VVTizNw262DHbHcdiOA6MtrM6eOSFYKxIjJEIJVnW5bw21BuHL18sfaqL2NbQRVXsbhTLIsl3uoNh5bkX5dcZ6KbOXEE9HRBpGgd4tSAKAButj6e/rjdQSCmoRUS1iNPINbAKCoYgXWxvtte23riGNbMhiEUlodp6OgeOFGiMgkkE7xa/vZWA2uLeIX52AxXmuYO9RD7avdtLHaOnR/C0nO3la2/ltgD/0icT93laIJALu4AVF67nDHlORCnf7ZrqpakPHdmeMr3JuL2b5XOIXfxqIr5D5W/jFD7P8AyfMvylVijnknSGfWTHJFusiG1008d7cb8etzgjLFQ5LMS9M6vNdzUKqroJPS2/H88fc8lhnywR08giYb3QgBdxb0Ftr4DZpVtmdH7HNFfQCGbfwsux35HBrRR+4wqE6+JT2qzOSroo4IZSQH0xopGpjxBPTiwws11F3FLC5c9+VHeKzC5e+9zw92DCJlyrUUk8tLKs9ir1FQsZUggqq7HfqT9cba4J7HDRkwsWYSIkDGxUbk77G1/fhdyahSisCsVCykKJPEQNwfXgfhgzRWzISyz6YmhTxJG5s4awGxvc8vhiutyyNaOOqqJWhqpV1tG4Hj5eEDhfjvwxqpcubKS0qmSqcsQViiuUtzvvYi+2KLo6mdj8XNizivxjJliMlPDdW1KyhgeIvsQfS+BK5bqrGsI2VWIva/P+nLBfsvHJ9nos5dnL+LXe99XO+B0kslNBmNZIzRxKJCr2uL7gEWN+NuXvONcraLOumaJGZn2mvnlXcGRrXPmcTGWJw8asGK3G4B54mCenB3HBIIsuyWmjp4UesYCR2sNRN77E/TBTtlPIMuhzCm3/aUje4ZTx+OBEyVU9dM9aiagdvBbT5A3N/TDLSwNW5A1HqKzQLoW25G3h+R+RxB94Il74EH6iBQSyrltPHUg03BWIS3lq478SffgxlNRNkOYzRypGZDpWKbRs6ngwPT649VeXnPlajkkigloolHs8coPi2GknhbG2ghlFPCK1ozGsfdDvEurAWsbX6jnbjjN5UaMJj8MDKch3cz55nXc0AMV1kmfVqJJPqfW/DAOoVsyq/aaiWoWJWVWEa7NYAmwG977XwTzjK5ErO6ij7hWW8fiJBBvwXluTt53xpyXKaWipZ4qp5jKCIi3eW3I1sFHAGxt78QW1c0B9T3AseXoq9//llQiVg5GleIIG/He+FLMJZ6qrWGnjsh8VyCARc/Xjb05YdZaIUkMlVlfeRzMglClNRVQeGnzsfjgbmM9JVVCw1C100/Fqc+FBe2wNr6RudvjbFMdHZg8+AZSAeu6+587KR0MMVc1UESRlKmYJYIlgPDyte+3zwytUq7pPNGG0G4gJsBp5dOOFHNZ6uWqlpYSopo4zJEiA2KDa3rccsbaHMIJaa08vjHEnn645+XcMqqdS6kz322dqGWhaku5ZlG66ehPnvjxmsUtPl8sUDsUlB7sO2+/If3wxQmYPTxsIi0cM101OdiR088Dc1qqmqkEcfeS0iDU2ocSwsdPThiw38SD7Z97OQfaU8UVKWFTHFoaQAaQBa7MffbDTTLlFDT6WSorApK96bIGa2+jbh/XA7s7lxhyXNI8uVmqp5FiFgTaMkaiCOgJ9+Mhq85pcxXLaqhaCmaQRwzzQmxB3Ww5HYc+OGXxMoHFbg+QuidRvK5bWzwd2rU9WjDR3q6lLMuwJ5bGwvjLmlMmZyigzGVKR+JEZ2sBuAx4Gx8uOMBqamjjiiVJHqIVVpLXCOzqCQDzbf4Y29q45MxyClq4dQqTdBbYki+x8jYg4Ei+p8URIPt/sYZy2ijyyg0LURyxxjWXB4Djx4cBjn3bTNnTLaTLInsagd7Nx4dPjfDwtM1H2eho3bVLPZGY87/AIvlt78cr7Wziu7SVTiQOIyIwRz0jGkgOgfiZjHuZYvwDa3piY+K1gBwxMMQU6ZS0aKhNlNibmMm1/p+W3uxqo6haKsEjO3dEaJFY8BxB92/uJxTT1OinUzAKFF/EeI+t9zyNrYzVM0TDTGwLDjve/6f371Lo2Ix+Uy9oMrny3NxNlcKsmYMBf8ACFkttuOX6YqoaqWWVRWyyVDG8bOIgoc8L73vbjhhyHM7olFUkANtTznfTtsp93D/AGxiq1np2mp65A08jO0ciwkJESNiSDc3FzcAc8JeSm+Y6jnjZNcD3ALd7NmtRRLVymnhiVjGwUMxBUKAbcyQb+WDMUbPl7JSahIt3SVxvrvuG5jbb3e7AF8sq6cw1NLWrJNMVLRuCQy3uWJHLa+GKiWqkgSWeniiqmJ75YXtpPCMEHe5tz239+Fq5DUaJCmF4FhbLXECqapIPxM9yL3H4vjhc7QtPAlNmcjGZ6a0MqxgtZWPhcDiN9vcMF1ElDS1FUVjlkkYNIUSxVbcCL8BfjjBQzLMsclXBEpnl16WYvaIbbAW+friqkBtyvxcHz5VUwZVOJTIHqFZBpuQmo8SOv5YA0PZutiRqmeqaH8QKgbnbcnV52t6HHQK8UtXIndzrFoHejjpfkb25j64A1KyU5ahnkhkZkMjBH0Bl6C/Dc3/ANsX5t0ouWWjs9wJLHmNXVUtDQrTxR92TZpCBe+7W3uPf1weyKhpRS19XnLIsMMtpI+CEqLDboOmPeS0xrTNLM4p6SEAu6mxAt+AH64NZTXZTVUDy0NAGpkcx3KgHbnbph3Ali21A5vbYEryrPmeoEEmmlpJQY4+6FtB634HY4KQR13fNS5pJFVUchIVjEbkEm3iGwtw347G/LAzOcvhjK1NMUanqgEkaRz4AOFj1254AU3aWpjrJKTJ555nV/8ASkS+m5sBfn6W95wdchB4sd/B+5VsSsAyRhrspzGur5KaBoxFGVtJaxC22v5bfG2Pfd6sxy7JaWXvYsvXvaibkW329b3OMebZrXfbUVFl766uWNVeNN9VtyT0UXxTmtXFkNAcry5w1ZLvUT33BP8AdsEAx4mLAbMC7EgAme89zFKqWqaALNFSQt3ahiNTj05HYY5MiyCZ0kQo4Y6l/dPTDnDUy5dlVRU00LPMh3W5O3U87D+yMKUtU9VUyVMqqrynUyqNIB9N8R45LEkxXMAuhLV1WxMeopQqWNvhfH3DUBOjpK1ZQe0TW1ouqw4FiCxJ/lHuwvVR0ogAsNyQNr7v08kHxPlaYmE43PFRXzxxjcMbcWHkpP5nDflsj1+RTmdzrgiBjkB8S35XPHhzx8xMVoHGRIB9wg+maQTwuZXJdCTe21gSAPLH3JquV6iRH0soqTEwYX1jTq38weeJiYyunNTWG1FzPO7PnsLlmF52WwY2ACttgHLO/wBpyOvhKNpULtpFrWHliYmKPMv/ANZiuIFfuGHrpYVooY1jAlDhja5sCvXrfBanWOOCXMnhjmqkVIleVb2Urf8AM4mJhjxtRxTyxrc3aYswyipkmgiRlcp92unUARx64F5GfYs+loYABTzIXZSOBGnh7jbExMaWTpTOxm1YGF81po48kjpogUjM22n9m9+GBUeTUfZXJJavLUL1Vv8AXnOpt/SwHwx9xMH4il1AgmpdKPsjsxBmFLvW10eqaocAvvc2B5DCfI7PNrcksFBv12xMTC2buCHcp7R53WZbSUsdIY1EqtqJW52sPqcLMP4b88TEwXx/xi+buEITaMbD4YmJiYYgZ//Z"
+         />
+         <h3>{resData.info.name}</h3>
+         <h4>{resData.info.cuisines.join(", ")}</h4>
+         <h4>{resData.info.avgRating}</h4>
+         <h4>{resData.info.costForTwo}</h4>
+         <h4>{resData.info.sla.deliveryTime} mins</h4>
+      </div>
+   );
+   };
+
+
+   const Body = () => {
+   return (
+      <div className="body">
+         <div className="search">Search</div>
+         <div className="res-container">
+         <RestaurantCard resData={resObj} />
+         </div>
+      </div>
+   );
+   };
+
+
+   The body is rendered further. Here, the data is coming through an API and is stored in the resObj object.
+   The RestaurantCard component takes this object as a prop and extracts the necessary information to display.
+
+
+
+
+37. Why to add a unique key prop when we are rendering a list?
+=> In React, when rendering a list of elements using the map() function or similar methods, it is important 
+   to add a unique key prop to each element in the list. The key prop identify which items in the list have changed, 
+   been added, or removed. This allows React to optimize the rendering process by only updating the parts of the DOM 
+   that have actually changed, rather than re-rendering the entire list. This leads to better performance and a smoother 
+   user experience.
+   Index as a key is not recommended in React because the index of an item in the array can change if the array is 
+   modified (e.g., items are added, removed, or reordered).
+
+   
+
+
+
+38. 
