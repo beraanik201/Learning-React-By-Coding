@@ -552,4 +552,127 @@ scripts into web pages viewed by other users.
 
 
 
-38. 
+38. Whats are Named and Default Exports?
+=> In JavaScript, modules can export values in two primary ways: named exports and default exports.
+
+   Named Exports:
+   - Named exports allow you to export multiple values from a module. Each value is exported with its own name.
+   - When importing named exports, you must use the same name as the exported value and wrap it in curly braces.
+   - Example of Named Export:
+     // module.js
+     export const foo = 'foo';
+     export const bar = 'bar';
+
+     // anotherFile.js
+     import { foo, bar } from './module';
+
+   Default Exports:
+   - A default export allows you to export a single value from a module. This value can be a function, class, object, or any other type.
+   - When importing a default export, you can choose any name for the imported value and do not need to use curly braces.
+   - Example of Default Export:
+     // module.js
+     const baz = 'baz';
+     export default baz;
+
+     // anotherFile.js
+     import myBaz from './module'; // You can name it anything
+
+   You can also combine both named and default exports in a single module:
+   // module.js
+   export const foo = 'foo';
+   export const bar = 'bar';
+   const baz = 'baz';
+   export default baz;
+
+   // anotherFile.js
+   import myBaz, { foo, bar } from './module';
+
+
+
+39. What is react hooks?
+=> React Hooks - Normal JS utility functions
+   React Hooks are special functions that allow you to use state and other React features in functional components. 
+   They were introduced in React 16.8 to enable developers to manage state and side effects without needing to convert 
+   functional components into class components. Hooks provide a more concise and readable way to handle component logic.
+
+   Some commonly used React Hooks include:
+   1. useState: Allows you to add state to functional components.
+   2. useEffect: Lets you perform side effects (like data fetching, subscriptions, or manually changing the DOM) in 
+      functional components.
+   3. useContext: Enables you to access context values without using the Context.Consumer component.
+   4. useReducer: Provides an alternative to useState for managing complex state logic.
+   5. useRef: Allows you to create mutable references that persist across renders, often used for accessing DOM elements.
+
+   Example of using useState and useEffect hooks:
+   import React, { useState, useEffect } from 'react';
+
+   function Counter() {
+      const [count, setCount] = useState(0);
+
+      useEffect(() => {
+         document.title = `You clicked ${count} times`;
+      }, [count]); // Only re-run the effect if count changes
+
+      return (
+         <div>
+            <p>You clicked {count} times</p>
+            <button onClick={() => setCount(count + 1)}>
+               Click me
+            </button>
+         </div>
+      );
+   }
+
+   In this example, the Counter component uses the useState hook to manage the count state and the useEffect hook 
+   to update the document title whenever the count changes.
+
+
+   ****When a state variable updated React re-renders the respective component.****
+
+
+
+
+40. How React works behind the scenes?
+=> React is a JavaScript library for building user interfaces, and it works behind the scenes through a series of steps
+   to efficiently update and render components. Here's a simplified overview of how React works:
+
+   1. ****Virtual DOM: React uses a virtual representation of the actual DOM (Document Object Model) called the Virtual DOM. 
+      This is a lightweight copy of the real DOM that allows React to make updates more efficiently.
+
+   2. ******Reconciliation (React Fiber): When a component's state or props change, React performs a process called reconciliation. It compares 
+      the new Virtual DOM with the previous version to determine what has changed. It is also knows as "Diffing".
+
+      Diff Algorithm:
+      - React uses a diffing algorithm to compare the new Virtual DOM with the previous version.
+      React Fiber:
+      - React Fiber is a new way of finding the differences between the two Virtual DOMs and Updates the DOM.
+      - The goal of React Fiber is to enable incremental rendering (The ability to split rendering work into chunks spread it out over multiple frames) of the Virtual DOM.
+
+   3. JSX Syntax: React uses JSX (JavaScript XML) syntax, which allows developers to write HTML-like code within JavaScript. 
+      This makes it easier to create and manage UI elements.
+
+   4. State and Props: Components can have state (data that can change over time) and props (data passed from parent 
+      components). When the state or props of a component change, React triggers a re-render of that component.
+
+   5. Component Structure: React applications are built using components, which are reusable and self-contained pieces 
+      of UI. Each component can have its own state and props (properties).
+
+   6. Efficient Updates: Instead of updating the entire DOM, React calculates the minimum number of changes needed to 
+      update the real DOM based on the differences found during reconciliation. This process is known as "diffing."
+
+   7. Batch Updates: React batches multiple updates together to optimize performance. Instead of updating the DOM immediately 
+      after each change, it waits until all changes are made before applying them in one go.
+
+   8. Rendering: Once the necessary changes are determined, React updates the real DOM with only the parts that have changed, 
+      resulting in a more efficient rendering process.
+
+   9. Event Handling: React provides a synthetic event system that normalizes events across different browsers, making it easier 
+      to handle user interactions.
+
+   10. Lifecycle Methods: Class components in React have lifecycle methods (e.g., componentDidMount, componentDidUpdate) that allow 
+       developers to hook into specific points in a component's lifecycle for tasks like data fetching or cleanup.
+
+
+
+
+41. 

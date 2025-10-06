@@ -1,27 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div>
-        <img
-          className="logo"
-          src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=food&sf=&txt_keyword=All"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
 const resList = [
   {
     info: {
@@ -46,6 +22,184 @@ const resList = [
       totalRatingsString: "1.0K+",
       sla: {
         deliveryTime: 43,
+        lastMileTravel: 11.3,
+        serviceability: "SERVICEABLE",
+        slaString: "40-45 mins",
+        lastMileTravelString: "11.3 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-10-05 22:30:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹175 OFF",
+        subHeader: "ABOVE ₹699",
+        discountTag: "FLAT DEAL",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-9a0756e9-bb48-4ec1-868e-a4ea3ceb4874",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/chhindwara/hotel-sai-nath-and-sai-restaurant-railway-station-chhindwara-locality-rest151649",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "151699",
+      name: "Sai Restaurant",
+      cloudinaryImageId: "vkhcohhmqfczycw9vsar",
+      locality: "railway station",
+      areaName: "Ch Locality",
+      costForTwo: "₹200 for two",
+      cuisines: [
+        "North Indian",
+        "South Indian",
+        "Chinese",
+        "Beverages",
+        "Fast Food",
+        "Desserts",
+      ],
+      avgRating: 3.2,
+      veg: true,
+      parentId: "101802",
+      avgRatingString: "4.2",
+      totalRatingsString: "1.0K+",
+      sla: {
+        deliveryTime: 143,
+        lastMileTravel: 11.3,
+        serviceability: "SERVICEABLE",
+        slaString: "40-45 mins",
+        lastMileTravelString: "11.3 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-10-05 22:30:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹175 OFF",
+        subHeader: "ABOVE ₹699",
+        discountTag: "FLAT DEAL",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-9a0756e9-bb48-4ec1-868e-a4ea3ceb4874",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/chhindwara/hotel-sai-nath-and-sai-restaurant-railway-station-chhindwara-locality-rest151649",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "159699",
+      name: "Pune Restaurant",
+      cloudinaryImageId: "vkhcohhmqfczycw9vsar",
+      locality: "railway station",
+      areaName: "Ch Locality",
+      costForTwo: "₹100 for two",
+      cuisines: [
+        "North Indian",
+        "South Indian",
+        "Chinese",
+        "Beverages",
+        "Fast Food",
+        "Desserts",
+      ],
+      avgRating: 2.2,
+      veg: true,
+      parentId: "101802",
+      avgRatingString: "4.2",
+      totalRatingsString: "1.0K+",
+      sla: {
+        deliveryTime: 143,
         lastMileTravel: 11.3,
         serviceability: "SERVICEABLE",
         slaString: "40-45 mins",
@@ -323,6 +477,95 @@ const resList = [
   },
   {
     info: {
+      id: "259699",
+      name: "Mumbai Restaurant",
+      cloudinaryImageId: "vkhcohhmqfczycw9vsar",
+      locality: "railway station",
+      areaName: "Ch Locality",
+      costForTwo: "₹100 for two",
+      cuisines: [
+        "North Indian",
+        "South Indian",
+        "Chinese",
+        "Beverages",
+        "Fast Food",
+        "Desserts",
+      ],
+      avgRating: 3.9,
+      veg: true,
+      parentId: "101802",
+      avgRatingString: "4.2",
+      totalRatingsString: "1.0K+",
+      sla: {
+        deliveryTime: 143,
+        lastMileTravel: 11.3,
+        serviceability: "SERVICEABLE",
+        slaString: "40-45 mins",
+        lastMileTravelString: "11.3 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-10-05 22:30:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹175 OFF",
+        subHeader: "ABOVE ₹699",
+        discountTag: "FLAT DEAL",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-9a0756e9-bb48-4ec1-868e-a4ea3ceb4874",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/chhindwara/hotel-sai-nath-and-sai-restaurant-railway-station-chhindwara-locality-rest151649",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
       id: "151518",
       name: "Bakery World",
       cloudinaryImageId: "mt2aggiscfl3yviatwng",
@@ -399,6 +642,95 @@ const resList = [
     },
     cta: {
       link: "https://www.swiggy.com/city/chhindwara/bakery-world-parasia-road-rest151518",
+      type: "WEBLINK",
+    },
+  },
+  {
+    info: {
+      id: "459699",
+      name: "Kolkata Restaurant",
+      cloudinaryImageId: "vkhcohhmqfczycw9vsar",
+      locality: "railway station",
+      areaName: "Ch Locality",
+      costForTwo: "₹500 for two",
+      cuisines: [
+        "North Indian",
+        "South Indian",
+        "Chinese",
+        "Beverages",
+        "Fast Food",
+        "Desserts",
+      ],
+      avgRating: 4.2,
+      veg: true,
+      parentId: "101802",
+      avgRatingString: "4.2",
+      totalRatingsString: "1.0K+",
+      sla: {
+        deliveryTime: 143,
+        lastMileTravel: 11.3,
+        serviceability: "SERVICEABLE",
+        slaString: "40-45 mins",
+        lastMileTravelString: "11.3 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-10-05 22:30:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹175 OFF",
+        subHeader: "ABOVE ₹699",
+        discountTag: "FLAT DEAL",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-9a0756e9-bb48-4ec1-868e-a4ea3ceb4874",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/chhindwara/hotel-sai-nath-and-sai-restaurant-railway-station-chhindwara-locality-rest151649",
       type: "WEBLINK",
     },
   },
@@ -557,55 +889,95 @@ const resList = [
       type: "WEBLINK",
     },
   },
+  {
+    info: {
+      id: "659699",
+      name: "Bhiwandi Restaurant",
+      cloudinaryImageId: "vkhcohhmqfczycw9vsar",
+      locality: "railway station",
+      areaName: "Ch Locality",
+      costForTwo: "₹1000 for two",
+      cuisines: [
+        "North Indian",
+        "South Indian",
+        "Chinese",
+        "Beverages",
+        "Fast Food",
+        "Desserts",
+      ],
+      avgRating: 3.8,
+      veg: true,
+      parentId: "101802",
+      avgRatingString: "4.2",
+      totalRatingsString: "1.0K+",
+      sla: {
+        deliveryTime: 143,
+        lastMileTravel: 11.3,
+        serviceability: "SERVICEABLE",
+        slaString: "40-45 mins",
+        lastMileTravelString: "11.3 km",
+        iconType: "ICON_TYPE_EMPTY",
+      },
+      availability: {
+        nextCloseTime: "2025-10-05 22:30:00",
+        opened: true,
+      },
+      badges: {
+        imageBadges: [
+          {
+            imageId: "v1695133679/badges/Pure_Veg111.png",
+            description: "pureveg",
+          },
+        ],
+      },
+      isOpen: true,
+      type: "F",
+      badgesV2: {
+        entityBadges: {
+          imageBased: {
+            badgeObject: [
+              {
+                attributes: {
+                  description: "pureveg",
+                  imageId: "v1695133679/badges/Pure_Veg111.png",
+                },
+              },
+            ],
+          },
+          textBased: {},
+          textExtendedBadges: {},
+        },
+      },
+      aggregatedDiscountInfoV3: {
+        header: "₹175 OFF",
+        subHeader: "ABOVE ₹699",
+        discountTag: "FLAT DEAL",
+      },
+      differentiatedUi: {
+        displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        differentiatedUiMediaDetails: {
+          lottie: {},
+          video: {},
+        },
+      },
+      reviewsSummary: {},
+      displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      restaurantOfferPresentationInfo: {},
+      externalRatings: {
+        aggregatedRating: {
+          rating: "--",
+        },
+      },
+      ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
+    },
+    analytics: {
+      context: "seo-data-9a0756e9-bb48-4ec1-868e-a4ea3ceb4874",
+    },
+    cta: {
+      link: "https://www.swiggy.com/city/chhindwara/hotel-sai-nath-and-sai-restaurant-railway-station-chhindwara-locality-rest151649",
+      type: "WEBLINK",
+    },
+  },
 ];
 
-const RestaurantCard = (props) => {
-  const { resData } = props;
-  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
-    resData?.info;
-  const { deliveryTime } = resData?.info?.sla;
-  console.log(resData);
-  return (
-    <div className="res-card">
-      <img
-        className="res-logo"
-        alt="res-logo"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating}</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{deliveryTime} mins</h4>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="res-container">
-        {resList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
+export default resList;
