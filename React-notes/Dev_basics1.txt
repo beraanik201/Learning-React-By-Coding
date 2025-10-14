@@ -954,7 +954,7 @@ scripts into web pages viewed by other users.
 
 
 
-   49. What is conditional rendering?
+49. What is conditional rendering?
 => Conditional rendering in React refers to the ability to render different components or elements based on certain conditions. 
    It allows you to control what gets displayed in the UI depending on the state of your application or specific props.
 
@@ -1028,7 +1028,7 @@ scripts into web pages viewed by other users.
 => In React, state variables are used to manage and track changes in a component's data over time, 
    while local variables are simply temporary storage within a function or component. 
 
-   ****When state variable is updated React re-renders the respective component.****
+   ****When state variable is updated React re-renders the respective component(reconciliation).****
 
    Here are some reasons why state variables are preferred over local variables in React:
 
