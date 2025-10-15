@@ -8,7 +8,6 @@ const Body = () => {
   const [filteredResList, setFilteredResList] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect called");
     fetchData();
   }, []);
 
@@ -20,17 +19,20 @@ const Body = () => {
 
     const jsonData = await data.json();
 
-    setResListData(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    const cards = jsonData?.data?.cards || [];
+    let restaurants = [];
 
-    setFilteredResList(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
+    for (const card of cards) {
+      const found = card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      if (found?.length) {
+        restaurants = found;
+        break;
+      }
+    }
 
-    console.log(jsonData);
+    setResListData(restaurants);
+
+    setFilteredResList(restaurants);
   };
 
   const handleSearch = () => {
