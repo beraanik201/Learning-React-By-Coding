@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [resListData, setResListData] = useState([]);
@@ -17,18 +18,11 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(`https://proxy.corsfix.com/?${swiggyApiUrl}`);
 
-    const jsonData = await data.json();
+    const json = await data.json();
 
-    const cards = jsonData?.data?.cards || [];
-    let restaurants = [];
-
-    for (const card of cards) {
-      const found = card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-      if (found?.length) {
-        restaurants = found;
-        break;
-      }
-    }
+    const restaurants = json?.data?.cards.find((item) =>
+      item?.card?.card?.id?.includes("restaurant_grid")
+    )?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
     setResListData(restaurants);
 
@@ -68,15 +62,21 @@ const Body = () => {
             const filteredList = resListData.filter(
               (res) => res.info.avgRating > 4.5
             );
-            setResListData(filteredList);
+            setFilteredResList(filteredList);
           }}
         >
           Top Rated Restaurants
         </button>
       </div>
       <div className="res-container">
-        {filteredResList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+        {filteredResList.map((res) => (
+          <Link
+            to={"/restaurants/" + res?.info?.id}
+            key={res?.info?.id}
+            className="restaurant-link"
+          >
+            <RestaurantCard resData={res} />
+          </Link>
         ))}
       </div>
     </div>

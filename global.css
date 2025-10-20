@@ -81,3 +81,18 @@
     height: 350px;
     margin: 10px;
 }
+
+.restaurant-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.restaurant-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menuItem-container {
+display: flex;
+justify-content:space-around;
+}
