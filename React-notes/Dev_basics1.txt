@@ -1498,5 +1498,29 @@ scripts into web pages viewed by other users.
 
 
 
-68. 
+68. What is Single Responsibility Principle?
+=> The Single Responsibility Principle (SRP) is a fundamental concept in software design and development that states that a class, module, 
+   or function should have only one reason to change. 
+   In other words, it should be responsible for a single functionality or concern.
+
+   The idea behind SRP is to promote modularity, maintainability, and readability in code. 
+   When a component adheres to SRP, it becomes easier to understand, test, and modify without affecting other parts of the system.
+
+   Benefits of Single Responsibility Principle:
+   1. Improved Maintainability: When a component has a single responsibility, it is easier to locate and fix bugs or make changes without impacting other functionalities.
+   2. Enhanced Readability: Code that follows SRP is often more straightforward and easier to comprehend, as each component has a clear purpose.
+   3. Easier Testing: Components with a single responsibility can be tested in isolation, making unit testing more effective and efficient.
+   4. Reduced Complexity: By breaking down complex systems into smaller, focused components, SRP helps reduce overall complexity and makes the codebase more manageable.
+
+   Example:
+   Consider a class that handles both user authentication and data retrieval. 
+   According to SRP, it would be better to separate these responsibilities into two distinct classes: 
+   one for authentication and another for data retrieval. This way, changes to the authentication logic won't affect the data retrieval logic and vice versa.
+
+   In summary, the Single Responsibility Principle is a key principle in software design that encourages developers to create components 
+   with focused responsibilities, leading to cleaner and more maintainable code.
+
+
+69. 
+
    
