@@ -1521,6 +1521,70 @@ scripts into web pages viewed by other users.
    with focused responsibilities, leading to cleaner and more maintainable code.
 
 
-69. 
+69. What is Dynamic bundling or Chunking or lazy loading or on demand loading?
+=> Dynamic bundling, also known as code splitting or chunking, is a technique used in web development to optimize the loading of JavaScript 
+   and other assets in a web application. It involves breaking down the application's code into smaller, manageable chunks or bundles that can be 
+   loaded on demand, rather than loading the entire application at once.
+
+   The main goal of dynamic bundling is to improve the performance and user experience of web applications by reducing the initial load time and 
+   allowing users to access content more quickly. By loading only the necessary code for a specific route or feature, dynamic bundling helps minimize 
+   the amount of data that needs to be transferred over the network.
+
+   Benefits of Dynamic Bundling:
+   1. Faster Initial Load: Users can start interacting with the application sooner since only essential code is loaded initially.
+   2. Reduced Bandwidth Usage: By loading only the required code, dynamic bundling reduces the amount of data transferred, which is especially beneficial for users on slow or limited connections.
+   3. Improved Caching: Smaller bundles can be cached more effectively by browsers, leading to faster subsequent loads.
+   4. Better User Experience: Users experience less waiting time and smoother navigation as they interact with different parts of the application.
+
+   Implementation:
+   Dynamic bundling can be implemented using various tools and libraries, such as Webpack's code splitting feature or React's lazy loading with React.lazy and Suspense. 
+   These tools allow developers to define how and when different parts of the application should be loaded based on user interactions or specific routes.
+
+   In summary, dynamic bundling is a powerful technique for optimizing web applications by breaking down code into smaller chunks that can be loaded on demand, 
+   leading to improved performance and user experience.
+
+
+
+
+70. What is React Lazy and Suspense?
+=> React.lazy and Suspense are features in React that enable code splitting and lazy loading of components. 
+   They allow developers to load components only when they are needed, which can improve the performance of React applications by reducing the initial load time.
+
+   React.lazy:
+   React.lazy is a function that allows you to define a component that is loaded dynamically. 
+   It takes a function that returns a promise (usually an import statement) and returns a React component that can be rendered.
+
+   Example:
+   import React, { Suspense } from 'react';
+
+   const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+   function App() {
+      return (
+         <div>
+            <Suspense fallback={<div>Loading...</div>}>
+               <LazyComponent />
+            </Suspense>
+         </div>
+      );
+   }
+
+   In this example, LazyComponent is loaded only when it is rendered, and while it is loading, the fallback content ("Loading...") is displayed.
+
+   Suspense:
+   Suspense is a component that allows you to specify a loading state while waiting for a lazy-loaded component to be ready. 
+   It wraps around the lazy-loaded component and provides a fallback UI that is displayed until the component has finished loading.
+
+   The combination of React.lazy and Suspense makes it easy to implement code splitting in React applications, allowing for better performance and user experience by loading components on demand.
+
+
+
+
+
+
+
+
+
+71. 
 
    
