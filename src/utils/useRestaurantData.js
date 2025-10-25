@@ -1,17 +1,23 @@
 import { useState, useEffect } from "react";
 import { RESTAURANT_MENU } from "./constants";
 
-const useRestaurantMenu = (resId) => {
+const useRestaurantData = (resId) => {
+  const [resInfo, setResInfo] = useState(null);
   const [resMenu, setResMenu] = useState([]);
 
   useEffect(() => {
-    fetchInfo();
+    fetchRestaurantData();
   }, []);
 
-  const fetchInfo = async () => {
+  const fetchRestaurantData = async () => {
     try {
       const data = await fetch(RESTAURANT_MENU + resId);
       const json = await data.json();
+
+      const restaurantInfo =
+        json?.data?.cards?.find((item) =>
+          item?.card?.card["@type"]?.includes("food.v2.Restaurant")
+        )?.card?.card?.info || null;
 
       const menuData = json?.data?.cards
         ?.find((obj) => obj?.groupedCard)
@@ -31,28 +37,24 @@ const useRestaurantMenu = (resId) => {
           return {
             title,
             type: "nested",
-            categories: categories.map((subCategories) => {
-              return {
-                title: subCategories?.title,
-                itemCards: subCategories?.itemCards,
-              };
-            }),
+            categories: categories.map((sub) => ({
+              title: sub?.title,
+              itemCards: sub?.itemCards,
+            })),
           };
         } else {
-          return {
-            title,
-            type: "item",
-            itemCards,
-          };
+          return { title, type: "item", itemCards };
         }
       });
 
-      setResMenu(organisedMenuData);
+      setResInfo(restaurantInfo);
+      setResMenu(organisedMenuData || []);
     } catch (err) {
-      console.log(err.message);
+      console.error("Error fetching restaurant data:", err.message);
     }
   };
-  return resMenu;
+
+  return { resInfo, resMenu };
 };
 
-export default useRestaurantMenu;
+export default useRestaurantData;
