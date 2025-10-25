@@ -2,24 +2,24 @@ import Shimmer from "./Shimmer";
 import ItemCategory from "./ItemCategory";
 import NestedItemCategory from "./NestedItemCategory";
 import { useParams } from "react-router-dom";
-import useRestaurantInfo from "../utils/useRestaurantInfo";
-import useRestaurantMenu from "../utils/useRestaurantMenu";
+import useRestaurantData from "../utils/useRestaurantData";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
-  const resInfo = useRestaurantInfo(resId);
-  const resMenu = useRestaurantMenu(resId);
+  const { resInfo, resMenu } = useRestaurantData(resId);
 
-  if (resInfo === null) return <Shimmer />;
+  if (!resInfo || resMenu.length === 0) {
+    return <Shimmer />;
+  }
 
   const { name, cuisines, costForTwoMessage, avgRating } = resInfo;
   const { deliveryTime } = resInfo?.sla;
 
   return (
     <div className="menu">
-      <h2>{name ?? ""}</h2>
-      <p>{cuisines.join(", ")}</p>
+      <h2>{name}</h2>
+      <p>{cuisines?.join(", ")}</p>
       <p>{costForTwoMessage}</p>
       <p>{avgRating ?? 0} ⭐</p>
       <p>Delivery Time: {deliveryTime ?? 0} mins</p>
