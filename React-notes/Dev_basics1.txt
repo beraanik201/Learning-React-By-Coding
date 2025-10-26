@@ -1585,6 +1585,55 @@ scripts into web pages viewed by other users.
 
 
 
-71. 
+71. What are the ways we can add styling in React Application?
+=> There are several ways to add styling in a React application:
+
+   1. Inline Styles: You can apply styles directly to elements using the style attribute, which accepts a JavaScript object with camelCased properties.
+      Example:
+      <div style={{ color: 'red', fontSize: '16px' }}>Hello World</div>
+
+   2. CSS Stylesheets: You can create separate CSS files and import them into your React components.
+      Example:
+      import './styles.css';
+      <div className="my-class">Hello World</div>
+
+   3. CSS Modules: CSS Modules allow you to scope CSS to specific components by using unique class names. 
+      You can import CSS files as modules and use them in your components.
+      Example:
+      import styles from './MyComponent.module.css';
+      <div className={styles.myClass}>Hello World</div>
+
+   4. Styled Components: This is a popular library that allows you to write actual CSS code within your JavaScript files using tagged template literals.
+      Example:
+      import styled from 'styled-components';
+      const Button = styled.button`
+         background-color: blue;
+         color: white;
+      `;
+      <Button>Click Me</Button>
+
+   5. CSS-in-JS Libraries: There are several libraries like Emotion, JSS, and Radium that allow you to write CSS styles directly in your JavaScript code.
+      Example with Emotion:
+      /** @jsxImportSource @emotion/react */
+      import { css } from '@emotion/react';
+      const style = css`
+         color: green;
+         font-size: 20px;
+      `;
+      <div css={style}>Hello World</div>
+
+   6. Preprocessors: You can use CSS preprocessors like SASS or LESS to write more advanced styles and then compile them into regular CSS files for use in your React application.
+
+   Each of these methods has its own advantages and use cases, so you can choose the one that best fits your project's requirements and your team's preferences.
+
+
+
+
+
+
+
+
+
+72. 
 
    
