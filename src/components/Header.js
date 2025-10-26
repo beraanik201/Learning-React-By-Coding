@@ -1,6 +1,6 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
@@ -17,37 +17,44 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between bg-gray-200 shadow-lg">
-      <div className="logo-container">
-        <img className="w-32" src={LOGO_URL} />
+    <header className="sticky top-0 z-50 bg-white shadow-md">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
+        <div className="flex items-center">
+          <img className="w-14 h-14 rounded-md" alt="App Logo" src={LOGO_URL} />
+        </div>
+
+        <nav className="flex-1 flex justify-end mr-6">
+          <ul className="flex items-center gap-6 text-gray-700 font-medium">
+            <li className="flex items-center gap-2">
+              <span className="text-sm text-gray-500">
+                {checkOnlineStatus ? "🟢 Online" : "🔴 Offline"}
+              </span>
+            </li>
+            {["Home", "About", "Contact", "Grocery", "Cart"].map((item) => (
+              <li key={item}>
+                <NavLink
+                  to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                  className={({ isActive }) =>
+                    `transition-colors duration-200 hover:text-orange-500 ${
+                      isActive ? "text-orange-600 font-semibold" : ""
+                    }`
+                  }
+                >
+                  {item}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <button
+          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-full shadow-md transition-all duration-200 hover:-translate-y-[2px] cursor-pointer"
+          onClick={handleLoginClick}
+        >
+          {btnState}
+        </button>
       </div>
-      <div className="flex items-center">
-        <ul className="flex p-4 m-4">
-          <li className="px-4">
-            Online Status: {checkOnlineStatus ? "🟢" : "🔴"}
-          </li>
-          <li className="px-4">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="px-4">
-            <Link to="/about">About Us</Link>
-          </li>
-          <li className="px-4">
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <li className="px-4">
-            <Link to="/grocery">Grocery</Link>
-          </li>
-          <li className="px-4">Cart</li>
-          <button
-            className="px-6 py-2 ml-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-all duration-200 -mt-2 cursor-pointer"
-            onClick={handleLoginClick}
-          >
-            {btnState}
-          </button>
-        </ul>
-      </div>
-    </div>
+    </header>
   );
 };
 

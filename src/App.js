@@ -8,14 +8,18 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 import Shimmer from "./components/Shimmer";
+import Footer from "./components/Footer";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Outlet />
+      <main className="grow">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 };
