@@ -17,27 +17,32 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
-      <div>
-        <img className="logo" src={LOGO_URL} />
+    <div className="flex justify-between bg-gray-200 shadow-lg">
+      <div className="logo-container">
+        <img className="w-32" src={LOGO_URL} />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {checkOnlineStatus ? "🟢" : "🔴"}</li>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4">
+            Online Status: {checkOnlineStatus ? "🟢" : "🔴"}
+          </li>
+          <li className="px-4">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
-          <button className="login-btn" onClick={handleLoginClick}>
+          <li className="px-4">Cart</li>
+          <button
+            className="px-6 py-2 ml-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-all duration-200 -mt-2 cursor-pointer"
+            onClick={handleLoginClick}
+          >
             {btnState}
           </button>
         </ul>
