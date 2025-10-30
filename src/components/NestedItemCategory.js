@@ -9,9 +9,6 @@ const NestedItemCategory = (props) => {
       </h2>
       {categories?.map((subcategory) => (
         <div key={subcategory?.title} className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-700 mb-3">
-            {subcategory?.title}
-          </h3>
           <ul className="space-y-4">
             {subcategory?.itemCards?.map((item) => (
               <MenuItem
