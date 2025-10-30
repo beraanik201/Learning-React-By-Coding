@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import ItemCategory from "./ItemCategory";
 import NestedItemCategory from "./NestedItemCategory";
@@ -8,6 +9,11 @@ const RestaurantMenu = () => {
   const { resId } = useParams();
 
   const { resInfo, resMenu } = useRestaurantData(resId);
+  const [openCategory, setOpenCategory] = useState(null);
+
+  const handleAccordion = (title) => {
+    setOpenCategory(openCategory === title ? null : title);
+  };
 
   if (!resInfo || resMenu.length === 0) {
     return <Shimmer />;
@@ -38,13 +44,28 @@ const RestaurantMenu = () => {
       </h2>
 
       <div className="space-y-8">
-        {resMenu.map((category) =>
-          category?.type === "item" ? (
-            <ItemCategory key={category?.title} data={category} />
-          ) : (
-            <NestedItemCategory key={category?.title} data={category} />
-          )
-        )}
+        {resMenu.map((category) => {
+          const isOpen = openCategory === category.title;
+          return (
+            <div key={category.title}>
+              <div
+                className="flex items-center justify-between cursor-pointer bg-gray-50 px-4 py-2 rounded-lg border"
+                onClick={() => handleAccordion(category.title)}
+              >
+                <span className="text-xl font-semibold">{category.title}</span>
+                <button className="text-2xl font-bold cursor-pointer">
+                  {isOpen ? "−" : "+"}
+                </button>
+              </div>
+              {isOpen &&
+                (category?.type === "item" ? (
+                  <ItemCategory key={category?.title} data={category} />
+                ) : (
+                  <NestedItemCategory key={category?.title} data={category} />
+                ))}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
