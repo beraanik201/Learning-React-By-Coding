@@ -25,4 +25,21 @@ const RestaurantCard = (props) => {
   );
 };
 
+//Higher Order Component (HOC)
+//input - RestaurantCard
+//output - RestaurantCard with some extra props
+
+export const withPromotedLabel = () => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute text-white bg-black m-2 p-2 rounded-lg">
+          Promoted
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
