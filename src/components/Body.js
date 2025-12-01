@@ -19,7 +19,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      `/api/swiggy?url=${encodeURIComponent(swiggyApiUrl)}`
+      "https://beraanik201.github.io/test_data/test.json"
     );
 
     const json = await data.json();
