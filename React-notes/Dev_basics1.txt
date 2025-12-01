@@ -1634,6 +1634,40 @@ scripts into web pages viewed by other users.
 
 
 
-72. 
+72. What are Higher Order Components (HOC) in React?
+=> Definition
 
-   
+   A Higher Order Component (HOC) is a function that takes a component as input and returns a new enhanced component.
+
+   HOC = Component → Enhanced Component
+
+   HOCs are mainly used to reuse component logic, add extra functionality, or wrap UI elements without modifying the original component.
+
+   ✅ Why do we use HOCs?
+
+   To add extra UI or extra behavior to an existing component
+
+   To reuse logic between multiple components
+
+   To keep components clean and avoid duplication
+
+   ✅ General Syntax
+
+   const withExtraFeature = (OriginalComponent) => {
+   return (props) => {
+      // enhance the component
+      return (
+         <div>
+         <OriginalComponent {...props} />
+         </div>
+      );
+   };
+   };
+
+   In my project, I used an HOC (withPromotedLabel) to wrap RestaurantCard and show a “Promoted” badge for promoted restaurants.
+
+
+
+
+
+74. 

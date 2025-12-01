@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +9,10 @@ const Body = () => {
   const [resListData, setResListData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredResList, setFilteredResList] = useState([]);
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+  console.log("Body Rendered", resListData);
 
   useEffect(() => {
     fetchData();
@@ -87,7 +91,11 @@ const Body = () => {
             key={res?.info?.id}
             className="w-full flex justify-center"
           >
-            <RestaurantCard resData={res} />
+            {res?.info?.promoted ? (
+              <RestaurantCardPromoted resData={res} />
+            ) : (
+              <RestaurantCard resData={res} />
+            )}
           </Link>
         ))}
       </div>
