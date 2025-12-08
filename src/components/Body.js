@@ -1,9 +1,10 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Offline from "./Offline";
+import userContext from "../utils/userContext";
 
 const Body = () => {
   const [resListData, setResListData] = useState([]);
@@ -52,6 +53,8 @@ const Body = () => {
 
   if (checkOnlineStatus === false) return <Offline />;
 
+  const { loggedInUser, setUserName } = useContext(userContext);
+
   return resListData.length === 0 ? (
     <Shimmer />
   ) : (
@@ -83,6 +86,18 @@ const Body = () => {
         >
           ⭐ Top Rated Restaurants
         </button>
+        <div className="flex items-center gap-2 rounded-md px-4 py-2">
+          <label className="mr-2 font-medium text-gray-700">
+            Change Username:
+          </label>
+          <input
+            type="text"
+            placeholder="Enter username"
+            value={loggedInUser || ""}
+            className="border border-gray-300 rounded-md p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-400 shadow-sm"
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6 place-items-center">
         {filteredResList.map((res) => (

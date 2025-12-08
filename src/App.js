@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,18 +9,34 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 import Shimmer from "./components/Shimmer";
 import Footer from "./components/Footer";
+import userContext from "./utils/userContext";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+
+  //authentication logic can be added here
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const loginData = await fetch("https://api.github.com/users/beraanik201");
+      const json = await loginData.json();
+      setUserName(json.name);
+    };
+    fetchUserData();
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="grow">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <userContext.Provider value={{ loggedInUser: userName, setUserName }}>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="grow">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </userContext.Provider>
   );
 };
 
