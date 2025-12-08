@@ -1843,4 +1843,72 @@ scripts into web pages viewed by other users.
 
 
 
-76. 
+76. What is Prop Drilling in React? Show example in your project.
+=> Prop Drilling is a React pattern where data (props) is passed from a parent component  down to deeply nested child components 
+   through multiple layers of intermediate components. 
+   This can lead to unnecessary complexity and make the code harder to maintain, especially when many components in the hierarchy 
+   do not need the data.
+
+   Example from My Project:
+   In my project, I implemented Prop Drilling to pass a dummy prop (dummyPropData) from the RestaurantMenu component down to the 
+   MenuItem component through intermediate components like ItemCategory and NestedItemCategory.
+
+   1. In RestaurantMenu.js, I defined the dummy prop:
+   const dummyPropData = "Understanding Prop Drilling in React Components";
+
+   2. I passed this prop down to ItemCategory:
+   <ItemCategory itemCards={category.itemCards} dummyPropData={dummyPropData} />
+
+   3. In ItemCategory.js, I received the prop and passed it further down to MenuItem:
+   <MenuItem key={item?.card?.info?.id} menuInfo={item?.card?.info} dummyPropData={props.dummyPropData} />
+
+   4. In NestedItemCategory.js, I also passed the prop down to MenuItem:
+   <MenuItem key={item?.card?.info?.id} menuInfo={item?.card?.info} dummyPropData={props.dummyPropData} />
+
+   5. Finally, in MenuItem.js, I accessed the dummy prop:
+   console.log("Received dummy prop:", props.dummyPropData);
+
+   This example illustrates how Prop Drilling works by passing data through multiple layers of components, 
+   even when some of those components do not directly use the data. 
+   While this approach works for small applications, it can become cumbersome in larger applications, 
+   where state management solutions like Context API or Redux may be more appropriate.
+
+77. Explain Context API in React? How did you use it in your project?
+=> The Context API in React is a built-in feature that allows for easier state management and data sharing across components without the need for prop drilling. 
+   It provides a way to create global state that can be accessed by any component in the component tree, regardless of how deeply nested it is.
+
+   Key Concepts of Context API:
+   1. Creating Context: You create a context using React.createContext(), which returns a Context object.
+   2. Provider: The Provider component is used to wrap the part of the component tree that needs access to the context. 
+      It accepts a value prop that represents the data to be shared.
+   3. Consumer: The Consumer component is used to access the context value in child components. 
+      Alternatively, you can use the useContext hook in functional components to access the context value directly.
+
+   Example from My Project:
+   In my project, I used the Context API to manage and share user information (loggedInUser and setUserName) across multiple components.
+
+   1. I created a userContext.js file:
+   import { createContext } from 'react';
+   const userContext = createContext();
+   export default userContext;
+
+   2. In App.js, I wrapped my application with the UserContext.Provider and provided the state values:
+   import userContext from './utils/userContext';
+   const [loggedInUser, setUserName] = useState("Default User");
+
+   <userContext.Provider value={{ loggedInUser, setUserName }}>
+      <Header />
+      <Body />
+      <Footer />
+   </userContext.Provider>
+
+   3. In components like Body.js and About.js, I accessed the context values using the useContext hook:
+   import { useContext } from 'react';
+   import userContext from '../utils/userContext';
+
+   const { loggedInUser, setUserName } = useContext(userContext);
+
+   This allowed me to easily share and update user information across different components without having to pass props through 
+   multiple layers of components, demonstrating the effectiveness of the Context API in managing global state in React applications.
+
+78. 
