@@ -1670,4 +1670,177 @@ scripts into web pages viewed by other users.
 
 
 
-74. 
+74. What are Controlled and Uncontrolled Components in React?
+=> 1️⃣ Controlled Components
+   2️⃣ Accordion Auto-Collapse Logic in RestaurantMenu.js
+
+   These are written exactly the way you should speak in an interview.
+
+   📝 NOTES FOR INTERVIEW
+   ⭐ 1. Controlled Components (in my project)
+
+   A controlled component is an input element whose value is completely managed by React state.
+   The UI always reflects the state, and the state updates on every change event.
+
+   ✔ Example from my project (Search Bar in Body.js)
+   const [searchText, setSearchText] = useState("");
+
+   <input 
+   value={searchText}
+   onChange={(e) => setSearchText(e.target.value)}
+   />
+
+   ✔ Why this is a controlled component?
+
+   The value of the input comes from React state (searchText)
+
+   When the input changes, I update the state
+
+   State → controls → UI
+
+   React is the single source of truth
+
+   Benefits:
+
+   Easy validation
+
+   Easy to manipulate/reset data
+
+   Predictable behavior
+
+   ⭐ 2. Uncontrolled Components
+
+   An uncontrolled component is an input whose value is handled by the DOM, not React.
+   We usually access the value using a ref.
+
+   ✔ Example Pattern (not in my page)
+   const inputRef = useRef();
+   <input ref={inputRef} />
+
+   ✔ Why it is called "uncontrolled"?
+
+   React does not track the value
+
+   DOM manages it internally
+
+   Used in file uploads and quick forms
+
+   ⭐ 3. Accordion Auto-Collapse Logic (In RestaurantMenu.js)
+
+   My accordion is implemented as a controlled component using React state.
+   Only one section stays open at a time. Opening a new one automatically collapses the previous one.
+
+   ✔ Core state used:
+   const [openCategory, setOpenCategory] = useState(null);
+
+   ✔ How it works:
+
+   I store the title of the currently open accordion section in openCategory.
+
+   When the user clicks a section:
+
+   setOpenCategory(openCategory === title ? null : title);
+
+
+   This logic ensures:
+
+   Clicking a new category → opens it and closes previous
+
+   Clicking the same open category → closes it
+
+   ✔ Rendering logic:
+   const isOpen = openCategory === category.title;
+
+   {isOpen && <ItemCategory ... />}
+
+   ✔ Why this works?
+
+   Because:
+
+   Only one title can be stored in openCategory
+
+   React re-renders → only the matching category opens
+
+   All others automatically collapse
+
+   ✔ Interview line:
+
+   “My accordion is controlled through a single state variable (openCategory).
+   Since this state holds only one value at a time, opening a new category automatically collapses the previously opened one.”
+
+   🎯 Short Interview Summary (Must Remember)
+
+   Controlled Component:
+
+   “Input whose value is managed by React state — like my search bar and accordion.”
+
+   Uncontrolled Component:
+
+   “Input managed by the DOM using refs — not used in my menu page.”
+
+   Accordion Auto-Collapse:
+
+   “Implemented using a single openCategory state.
+   It stores the currently open section’s title, so only one section can be open at a time.”
+
+
+
+
+
+
+75. What is Lifting State Up in React?
+=> Lifting State Up is a React pattern where state is moved from a child component to a common parent component. 
+   This allows multiple child components to share and synchronize state through props.
+
+   Why Lift State Up?
+   1. Shared State: When two or more components need to access or modify the same piece of state, lifting it up to their nearest common 
+      ancestor allows them to share that state.
+   2. Single Source of Truth: By keeping the state in one place (the parent), it becomes easier to manage and debug, as there is a 
+      single source of truth for that state.
+   3. Improved Communication: Child components can communicate changes back to the parent, which can then update the state and 
+      pass the new values down to other children as needed.
+
+   Example:
+   Consider a scenario where you have two sibling components, A and B, that both need to access and modify a shared piece of state (e.g., a counter value). 
+   Instead of each component managing its own state, you would lift the state up to their common parent component.
+
+   Parent Component:
+   function Parent() {
+      const [count, setCount] = useState(0);
+
+      return (
+         <div>
+            <ComponentA count={count} setCount={setCount} />
+            <ComponentB count={count} setCount={setCount} />
+         </div>
+      );
+   }
+
+   Child Components:
+   function ComponentA({ count, setCount }) {
+      return (
+         <div>
+            <p>Component A Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
+         </div>
+      );
+   }
+
+   function ComponentB({ count, setCount }) {
+      return (
+         <div>
+            <p>Component B Count: {count}</p>
+            <button onClick={() => setCount(count - 1)}>Decrement</button>
+         </div>
+      );
+   }
+
+   In this example, both ComponentA and ComponentB receive the shared count state and the setCount function as props from the 
+   Parent component. This allows them to read and modify the same count value, demonstrating the concept of lifting state up in React.
+
+
+
+
+
+
+76. 
