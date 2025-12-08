@@ -48,7 +48,7 @@ const Header = () => {
         </nav>
 
         <button
-          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-full shadow-md transition-all duration-200 hover:-translate-y-[2px] cursor-pointer"
+          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-full shadow-md transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
           onClick={handleLoginClick}
         >
           {btnState}
