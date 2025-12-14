@@ -59,17 +59,9 @@ const RestaurantMenu = () => {
               </div>
               {isOpen &&
                 (category?.type === "item" ? (
-                  <ItemCategory
-                    key={category?.title}
-                    data={category}
-                    dummyPropData={dummyPropData}
-                  />
+                  <ItemCategory key={category?.title} data={category} />
                 ) : (
-                  <NestedItemCategory
-                    key={category?.title}
-                    data={category}
-                    dummyPropData={dummyPropData}
-                  />
+                  <NestedItemCategory key={category?.title} data={category} />
                 ))}
             </div>
           );

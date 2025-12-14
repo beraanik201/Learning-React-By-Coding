@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import userContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnState, setBtnState] = useState("Login");
@@ -19,6 +20,10 @@ const Header = () => {
       setBtnState("Login");
     }
   };
+
+  //subscribing to the store using a Selector hook
+
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
@@ -45,6 +50,11 @@ const Header = () => {
                   }
                 >
                   {item}
+                  {item === "Cart" && cartItems.length > 0 && (
+                    <span className="ml-1 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                      {cartItems.length}
+                    </span>
+                  )}
                 </NavLink>
               </li>
             ))}
