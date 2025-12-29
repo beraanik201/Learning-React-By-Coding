@@ -2125,4 +2125,37 @@ scripts into web pages viewed by other users.
     Overall, Redux Toolkit simplifies state management in this project by providing a structured way to handle cart operations, 
     ensuring that state changes are predictable and easy to manage across different components.
 
-82. 
+82. Explain the difference:
+   import { useSelector, useDispatch } from 'react-redux';
+   const cart = () => {
+      const store = useSelector((store) => store.cart.items);
+   }
+
+   and 
+
+   const cart = () => {
+      const store = useSelector((store) => store);
+      const cartItems = store.cart.items;
+   }
+
+=> Yes, there is a performance difference: selecting the entire store causes the component to re-render 
+   on every Redux update, while selecting only store.cart.items re-renders the component only when that slice 
+   changes.
+
+83. Reducer vs Reducers in Redux Toolkit?
+=> In Redux Toolkit, "reducer" and "reducers" refer to different concepts:
+
+   1. Reducer:
+      - A reducer is a single function that takes the current state and an action as arguments and returns a new state.
+      - It is responsible for handling state changes based on the dispatched actions.
+      - In Redux Toolkit, you typically define a reducer within a slice using createSlice.
+
+   2. Reducers:
+      - "Reducers" (plural) refers to the collection of multiple reducer functions that manage different parts of the application state.
+      - When configuring the Redux store using configureStore, you can combine multiple reducers into a single root reducer.
+      - Each slice created with createSlice has its own reducer, and these can be combined in the store configuration.
+
+   In summary, a "reducer" is a single function that manages state changes, while "reducers" refers to the 
+   collection of multiple reducer functions used in the Redux store.
+
+84. 
