@@ -24,13 +24,13 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://beraanik201.github.io/test_data/test.json"
+      "https://beraanik201.github.io/test_data/test.json",
     );
 
     const json = await data.json();
 
     const restaurants = json?.data?.cards.find((item) =>
-      item?.card?.card?.id?.includes("restaurant_grid")
+      item?.card?.card?.id?.includes("restaurant_grid"),
     )?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
     setResListData(restaurants);
@@ -40,7 +40,7 @@ const Body = () => {
 
   const handleSearch = () => {
     const filteredList = resListData.filter((res) =>
-      res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+      res?.info?.name.toLowerCase().includes(searchText.toLowerCase()),
     );
     setFilteredResList(filteredList);
   };
@@ -79,7 +79,7 @@ const Body = () => {
           className="bg-gray-100 hover:bg-gray-200 px-5 py-2 font-semibold rounded-md shadow-sm border border-gray-300 transition-all duration-200 cursor-pointer"
           onClick={() => {
             const filteredList = resListData.filter(
-              (res) => res.info.avgRating > 4.5
+              (res) => res.info.avgRating > 4.5,
             );
             setFilteredResList(filteredList);
           }}
@@ -99,12 +99,12 @@ const Body = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6 place-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
         {filteredResList.map((res) => (
           <Link
             to={"/restaurants/" + res?.info?.id}
             key={res?.info?.id}
-            className="w-full flex justify-center"
+            className="w-full"
           >
             {res?.info?.promoted ? (
               <RestaurantCardPromoted resData={res} />
